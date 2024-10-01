@@ -17,22 +17,31 @@ import Divider from '@mui/material/Divider';
 import SvgIcon from '@mui/material/SvgIcon';
 import AppTheme from './AppTheme';
 import { Theme } from '@mui/material/styles';
+import { ColorSchemeTabsBasic } from './mui-treasury/color-scheme-tabs-basic';
+
 
 function App() {
 
   return (
     <AppTheme>
       <CssBaseline />
+      <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
+        <ColorSchemeTabsBasic />
+      </Box>
       <Box
         sx={(theme: Theme) => ({
-          padding: "2rem",
+          '--padding': "2rem",
+          padding: "var(--padding)",
           maxWidth: "400px",
           margin: "auto",
           marginTop: "10vh",
-          border: "1px solid #eee",
-          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.08)",
-          borderRadius: `calc(${theme.shape.borderRadius}px * 2)`,
-          backgroundColor: "#fff",
+          "@media (min-width: 600px)": {
+            border: "1px solid ",
+            borderColor: theme.palette.divider,
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.08)",
+            borderRadius: `calc(${theme.shape.borderRadius}px + var(--padding) * 0.5)`,
+            backgroundColor: theme.palette.background.paper,
+          },
         })}
       >
         <Stack spacing={2} useFlexGap>
