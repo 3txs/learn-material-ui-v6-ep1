@@ -1,3 +1,5 @@
+// Supports weights 100-900
+import '@fontsource-variable/inter';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -13,24 +15,30 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import SvgIcon from '@mui/material/SvgIcon';
+import AppTheme from './AppTheme';
+import { Theme } from '@mui/material/styles';
 
 function App() {
 
   return (
-    <>
+    <AppTheme>
       <CssBaseline />
       <Box
-        sx={{
+        sx={(theme: Theme) => ({
           padding: "2rem",
           maxWidth: "400px",
-          minWidth: "400px",
           margin: "auto",
+          marginTop: "10vh",
           border: "1px solid #eee",
           boxShadow: "0 2px 10px rgba(0, 0, 0, 0.08)",
-          borderRadius: "4px",
-        }}
+          borderRadius: `calc(${theme.shape.borderRadius}px * 2)`,
+          backgroundColor: "#fff",
+        })}
       >
         <Stack spacing={2} useFlexGap>
+          <Typography variant="h1" sx={{ fontSize: "2rem", fontWeight: 500 }}>
+            Sign in
+          </Typography>
           <TextField label="Email"
             id="email"
             type="email"
@@ -93,7 +101,7 @@ function App() {
           </Button>
         </Stack>
       </Box>
-    </>
+    </AppTheme>
   )
 }
 
